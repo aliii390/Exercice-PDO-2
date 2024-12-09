@@ -29,10 +29,14 @@ if ($id && is_numeric($id)) {   //ici je met is_numeric pr voir si la variable c
     <link rel="stylesheet" href="./css/profil-patient.css">
 </head>
 <body>
-<a href="./createUser.php" class="glass-link">Ajoutez une autre personne</a>
+    <div style="display:flex; flex-direction:column; gap:15px;">
+    <a href="./createUser.php" class="glass-link">Ajoutez une autre personne</a>
+    <a href="./index.php" class="glass-link">List utilisateur</a>
+    </div>
+
 
     <div class="container">
-<?php if (isset($user)): ?>  
+<?php if (isset($user)): ?>  <!-- si sa existe il ce passe saaa -->
     <h1>Profil de <?= $user['firstname'] ?> <?= $user['lastname'] ?></h1>
     <ul>
         <li>Nom : <?= $user['firstname'] ?></li>
@@ -41,10 +45,12 @@ if ($id && is_numeric($id)) {   //ici je met is_numeric pr voir si la variable c
         <li>Téléphone : <?=$user['phone'] ?></li>
         <li>Adresse Mail : <?= $user['mail'] ?></li>
     </ul>
-<?php else: ?>
+<?php else: ?>  <!-- si la condit exste pas il ce passe sa  -->
     <p>Aucun patient trouvé avec cet ID.</p>
 <?php endif; ?>  <!-- d'apres de ce que j'ai compris endif sert  a fermer le bloc if-else -->
 </div>
+
+
 
 
 </body>

@@ -11,6 +11,8 @@
 </head>
 
 <body>
+
+
     <form action="./process/processCreate.php" method="post" class="container">
 
         <label for="nom">Nom : </label>
@@ -27,7 +29,7 @@
 
         <label for="mail">Adresse mail : </label>
         <input type="tel" name="mail" id="mail">
-
+      
 
         <input type="submit" value="Creer utilisateur">
     </form>

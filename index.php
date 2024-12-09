@@ -8,12 +8,9 @@ try {
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // ou fetch si vous savez que vous n'allez avoir qu'un seul résultat
 
 } catch (PDOException $error) {
-    echo "Erreur lors de la requete : " . $error->getMessage();
+    echo "Erreur lors de la requête : " . $error->getMessage();
 }
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,22 +23,23 @@ try {
 </head>
 
 <body>
+    <div class="btn-a">
+        <a href="./createUser.php" class="glass-link">Ajoutez une autre personne</a>
+    </div>
+
     <ol>
         <h1>Liste des utilisateurs :</h1>
 
         <?php
         foreach ($users as $user) {
-           
         ?>
-            <li>Nom : <?= $user['firstname'] ?> | Prénom : <?= $user['lastname']  ?>   | Date Anniversaire :  <?= $user['birthdate']  ?>  |  Numéro de téléphone : <?= $user['phone']  ?>  | Adresse Mail :  <?= $user['mail']  ?>  </li>
-
+            <li>Nom : <?= $user['firstname'] ?> | Prénom : <?= $user['lastname'] ?> | Date Anniversaire : <?= $user['birthdate'] ?> | Numéro de téléphone : <?= $user['phone'] ?> | Adresse Mail : <?= $user['mail'] ?>
+                <a href="profil-patient.php?id=<?= $user['id'] ?>">Voir Profil</a>
+            </li>
         <?php
         }
-
         ?>
-
     </ol>
-
 </body>
 
 </html>

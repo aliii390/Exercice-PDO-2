@@ -34,7 +34,7 @@ try {
         foreach ($users as $user) {
         ?>
             <li>Nom : <?= $user['firstname'] ?> | Prénom : <?= $user['lastname'] ?> | Date Anniversaire : <?= $user['birthdate'] ?> | Numéro de téléphone : <?= $user['phone'] ?> | Adresse Mail : <?= $user['mail'] ?>
-                <a href="profil-patient.php?id=<?= $user['id'] ?>">Voir Profil</a>
+                <a href="profil-patient.php?id=<?= $user['id'] ?>">Voir Profil</a>  <!-- en gros quand je clique sur le lien sa me permet de cliquer sur profil de l'user car je recup l'id sa s'appelle une url dynamique -->
             </li>
         <?php
         }

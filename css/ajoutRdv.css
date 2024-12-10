@@ -1,0 +1,77 @@
+/* Styles de base */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2a2a2a, #1c1c1c);
+  }
+  
+  /* Conteneur principal */
+  .form-container {
+    backdrop-filter: blur(10px);
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 20px;
+    padding: 20px 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  /* Formulaire */
+  .appointment-form h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    color: #ccc;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input,
+  textarea,
+  button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  input,
+  textarea {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  button {
+    background: linear-gradient(135deg, #ff4081, #7c4dff);
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #7c4dff, #ff4081);
+  }
+  

@@ -1,7 +1,7 @@
 <?php
 require_once './connect.php';
 
-$sql = "SELECT * FROM `patients`";
+$sql = "SELECT * FROM `appointments`";
 
 try {
     $stmt = $pdo->query($sql);
@@ -28,14 +28,13 @@ try {
     </div>
 
     <ol>
-        <h1>Liste des utilisateurs :</h1>
+        <h1>Liste des Rendez-vous:</h1>
 
         <?php
         foreach ($users as $user) {
         ?>
-            <li>Nom : <?= $user['firstname'] ?> | Prénom : <?= $user['lastname'] ?> | Date Anniversaire : <?= $user['birthdate'] ?> | Numéro de téléphone : <?= $user['phone'] ?> | Adresse Mail : <?= $user['mail'] ?>
+            <li>Heure du rendez-vous : <?= $user['dateHour'] ?> | Nom du client : <?= $user['idPatients'] ?> </li>
                 <a href="profil-patient.php?id=<?= $user['id'] ?>">Voir Profil</a>  <!-- en gros quand je clique sur le lien sa me permet de cliquer sur profil de l'user car je recup l'id sa s'appelle une url dynamique -->
-                <a href="./ajout-rendezVous.php?= $user['id'] ?>">Ajoutez un rendez-vous</a>  <!-- en gros quand je clique sur le lien sa me permet de cliquer sur profil de l'user car je recup l'id sa s'appelle une url dynamique -->
             </li>
         <?php
         }

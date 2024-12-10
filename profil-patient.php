@@ -45,6 +45,7 @@ if ($id && is_numeric($id)) {   //ici je met is_numeric pr voir si la variable c
         <li>Téléphone : <?=$user['phone'] ?></li>
         <li>Adresse Mail : <?= $user['mail'] ?></li>
     </ul>
+    <a href="./modifPatient.php?id=<?= $user['id'] ?>"> Modifier le profil </a>
 <?php else: ?>  <!-- si la condit exste pas il ce passe sa  -->
     <p>Aucun patient trouvé avec cet ID.</p>
 <?php endif; ?>  <!-- d'apres de ce que j'ai compris endif sert  a fermer le bloc if-else -->

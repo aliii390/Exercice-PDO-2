@@ -9,7 +9,7 @@ if (isset($_GET['rdv'])) {
     $idPatients = $_GET['rdv'];
 
 
-    $sql = "SELECT patients.lastname , patients.firstname , appointments.dateHour  FROM `appointments`
+    $sql = "SELECT patients.lastname , patients.firstname , appointments.dateHour, appointments.id  FROM `appointments`
             JOIN patients ON appointments.idPatients = patients.id WHERE patients.id = :id";
 
     try {
@@ -70,7 +70,7 @@ if (isset($_GET['rdv'])) {
     <div id="editForm" style="display: none;">
         <h2>Modifiez les informations du rendez-vous</h2>
         <form action="./modifRdv.php" method="POST">
-            <input type="hidden" name="id" value="<?= $idPatients ?>">
+            <input type="hidden" name="id" value="<?= $infoPatients['id'] ?>">
 
             <p> <?= $infoPatients['lastname'] . " " . $infoPatients['firstname'] ?></p>
 

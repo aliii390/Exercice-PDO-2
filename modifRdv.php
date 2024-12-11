@@ -1,23 +1,24 @@
-<?php 
+<?php
 
 require_once './connect.php';
 
 
 $dateHour = $_POST["dateHour"];
-$id = $_POST["id"];
-// var_dump($_POST);
-// die();
-
-
+$idRdv = $_POST["id"];
 
 
 // $sql = "update patients set lastname ='$lastName', firstname ='$firstName', phone ='$phone', mail ='$mail', birthdate ='$birthdate' FROM WHERE id LIKE {$id};";
 
-$stmt = $pdo->prepare("UPDATE appointments SET dateHour = :dateHour  WHERE id LIKE :id");
-$stmt -> execute([
-    ":dateHour" => $dateHour,
-     ":id" => $id ,
-]);
+try {
+    $stmt = $pdo->prepare("UPDATE appointments SET dateHour = :dateHour  WHERE id LIKE :idRdv");
+    $stmt->execute([
+        ":dateHour" => $dateHour,
+        ":idRdv" => $idRdv,
+    ]);
+} catch (\PDOException $error) {
+    echo 'Erreur de requete : ' . $error->getMessage();
+}
+
 
 // $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email) VALUES (?, ?, ?)");
 
@@ -35,7 +36,3 @@ $stmt -> execute([
 // }
 
 header('Location: ./listeRdv.php');
-
-
-
-?>

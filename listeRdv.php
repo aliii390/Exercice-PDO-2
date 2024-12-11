@@ -11,7 +11,10 @@ try {
 } catch (PDOException $error) {
     echo "Erreur lors de la requête : " . $error->getMessage();
 }
+// var_dump($appointments);
+// die();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

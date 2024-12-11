@@ -5,15 +5,21 @@ require_once './connect.php';
 
 $dateHour = $_POST["dateHour"];
 $idPatients = $_POST["idPatients"];
-
+$id = $_POST["id"];
+// var_dump($_POST);
+// die();
 
 
 
 
 // $sql = "update patients set lastname ='$lastName', firstname ='$firstName', phone ='$phone', mail ='$mail', birthdate ='$birthdate' FROM WHERE id LIKE {$id};";
 
-$stmt = $pdo->prepare("update appointments set dateHour ='$dateHour', idPatients ='$idPatients', WHERE id LIKE {$id};");
-$stmt -> execute();
+$stmt = $pdo->prepare("update appointments set dateHour =:dateHour, idPatients =:idPatients WHERE id LIKE :id;");
+$stmt -> execute([
+    ":dateHour" => $dateHour,
+    ":idPatients" => $idPatients,
+     ":id" => $id ,
+]);
 
 // $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email) VALUES (?, ?, ?)");
 

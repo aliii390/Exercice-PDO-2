@@ -30,7 +30,7 @@ try {
 }
 
 
-header("Location: ../index.php");
+header("Location: ../listeUser.php");
 // exit;
 
 ?>

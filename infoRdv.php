@@ -68,6 +68,9 @@ if (isset($_GET['rdv'])) {
 
             <label for="dateHour"> Heure du rdv:</label>
             <input type="datetime-local" id="dateHour" name="dateHour" value="<?= $rdv['dateHour'] ?>" required><br>
+            
+            <label for="idPatients">ID Patient :</label>
+            <input type="text" name="idPatients" id="idPatients" required >
 
             <!-- <label for="idPatients">Nom du client</label>
             <input type="text" id="idPatients" name="idPatients" value="" required><br> -->

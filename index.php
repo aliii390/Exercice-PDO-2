@@ -1,46 +1,27 @@
-<?php
-require_once './connect.php';
-
-$sql = "SELECT * FROM `patients`";
-
-try {
-    $stmt = $pdo->query($sql);
-    $users = $stmt->fetchAll(PDO::FETCH_ASSOC); // ou fetch si vous savez que vous n'allez avoir qu'un seul résultat
-
-} catch (PDOException $error) {
-    echo "Erreur lors de la requête : " . $error->getMessage();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste Utilisateur</title>
-    <link rel="stylesheet" href="./css/listeUser.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page d'accueil Glassmorphism</title>
+  <link rel="stylesheet" href="./css/acceuil.css">
 </head>
-
 <body>
-    <div class="btn-a">
-        <a href="./createUser.php" class="glass-link">Ajoutez une autre personne</a>
+  <div class="container">
+    <div class="glass-card">
+      <h1>< HOPITAL<span style="color: purple;">404 </span>/></h1>
+      <p>Welcome, Bienvenue :)</p>
+      <div class="buttons">
+        <a href="./createUser.php" class="btn">Créer un utilisateur</a>
+        <a href="./ajout-rendezVous.php" class="btn">Ajouter un rendez-vous</a>
+   
+      </div>
     </div>
 
-    <ol>
-        <h1>Liste des utilisateurs :</h1>
 
-        <?php
-        foreach ($users as $user) {
-        ?>
-            <li>Nom : <?= $user['firstname'] ?> | Prénom : <?= $user['lastname'] ?> | Date Anniversaire : <?= $user['birthdate'] ?> | Numéro de téléphone : <?= $user['phone'] ?> | Adresse Mail : <?= $user['mail'] ?>
-                <a href="profil-patient.php?id=<?= $user['id'] ?>">Voir Profil</a>  <!-- en gros quand je clique sur le lien sa me permet de cliquer sur profil de l'user car je recup l'id sa s'appelle une url dynamique -->
-                <a href="./ajout-rendezVous.php?= $user['id'] ?>">Ajoutez un rendez-vous</a>  <!-- en gros quand je clique sur le lien sa me permet de cliquer sur profil de l'user car je recup l'id sa s'appelle une url dynamique -->
-            </li>
-        <?php
-        }
-        ?>
-    </ol>
+
+    
+  </div>
+
 </body>
-
 </html>

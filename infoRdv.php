@@ -1,23 +1,27 @@
 <?php
 require_once './connect.php';
 
+
+
+
 if (isset($_GET['rdv'])) {
 
-    $idRdv = $_GET['rdv'];
+    $idPatients = $_GET['rdv'];
 
-    $sql = "SELECT * FROM appointments WHERE id = :id";
+
+    $sql = "SELECT patients.lastname , patients.firstname , appointments.dateHour  FROM `appointments`
+            JOIN patients ON appointments.idPatients = patients.id WHERE patients.id = :id";
 
     try {
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['id' => $idRdv]);
-        $rdv = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->execute(['id' => $idPatients]);
+        $infoPatients = $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $error) {
         echo "Erreur lors de la requête : " . $error->getMessage();
     }
 } else {
     die('ID Invalide ou non spécifié');
 }
-
 
 
 
@@ -45,9 +49,11 @@ if (isset($_GET['rdv'])) {
 
 
     <div class="container">
-        <?php if (isset($rdv) && !empty($rdv)): ?> <!-- si sa existe il ce passe saaa -->
+        <?php if (isset($infoPatients) && !empty($infoPatients)): ?> <!-- si sa existe il ce passe saaa -->
             <ul>
-                <li> Heure du rdv : <?= $rdv['dateHour'] ?></li>
+                <li> Heure du rdv : <?= $infoPatients['dateHour'] ?></li>
+                <li>Nom du client : <?= $infoPatients['lastname'] ?> </li>
+                <li>Prénom du client : <?= $infoPatients['firstname'] ?> </li>
 
             </ul>
 
@@ -64,17 +70,12 @@ if (isset($_GET['rdv'])) {
     <div id="editForm" style="display: none;">
         <h2>Modifiez les informations du rendez-vous</h2>
         <form action="./modifRdv.php" method="POST">
-            <input type="hidden" name="id" value="<?= $rdv['id'] ?>">
+            <input type="hidden" name="id" value="<?= $idPatients ?>">
+
+            <p> <?= $infoPatients['lastname'] . " " . $infoPatients['firstname'] ?></p>
 
             <label for="dateHour"> Heure du rdv:</label>
-            <input type="datetime-local" id="dateHour" name="dateHour" value="<?= $rdv['dateHour'] ?>" required><br>
-            
-            <label for="idPatients">ID Patient :</label>
-            <input type="text" name="idPatients" id="idPatients" required >
-
-            <!-- <label for="idPatients">Nom du client</label>
-            <input type="text" id="idPatients" name="idPatients" value="" required><br> -->
-
+            <input type="datetime-local" id="dateHour" name="dateHour" required><br>
 
 
 

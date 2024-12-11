@@ -1,7 +1,8 @@
 <?php
 require_once './connect.php';
 
-$sql = "SELECT * FROM `appointments`";
+$sql = "SELECT * FROM `appointments`
+JOIN patients ON appointments.idPatients = patients.id";
 
 try {
     $stmt = $pdo->query($sql);
@@ -36,7 +37,7 @@ try {
         <?php
         foreach ($appointments as $appointment) {
         ?>
-            <li>Heure du rendez-vous : <?= $appointment['dateHour'] ?> | Nom du client : <?= $appointment['idPatients'] ?> 
+            <li>Heure du rendez-vous : <?= $appointment['dateHour'] ?> | Nom du client : <?= $appointment['lastname'] ?> | Prénom du client :  <?= $appointment['firstname'] ?> 
             <a href="./infoRdv.php?rdv=<?= $appointment['id'] ?>">Voir rendez vous</a> 
         </li>
                  
